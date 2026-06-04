@@ -164,9 +164,11 @@ A cookie is:
 A cookie usually contains:
 
 * Session identifiers
-* User preferences
-* Login information
 * Tracking identifiers
+* Login information
+* User preferences
+
+
 
 A cookie is stored on your computer or phone.
 
@@ -249,7 +251,7 @@ Example:
 
 You log into Gmail.
 
-Google stores a session cookie.
+Google stores a session cookie.----------Google creates (sets) the cookie, but your browser stores it.
 
 Now Google remembers:
 
@@ -290,11 +292,11 @@ ID = 1234ABCD
 
 This identifier may uniquely represent:
 
-YOU
+**YOU**
 
 not millions of users
 
-but specifically you.
+**but specifically you.**
 
 Whenever your browser visits certain websites:
 
@@ -386,7 +388,7 @@ https://example.com/page?a=1&b=2&c=3
 
 Parameters:
 
-```text
+```
 a=1
 b=2
 c=3
@@ -402,7 +404,7 @@ Examples:
 
 ### Search Engines
 
-```text
+```
 ?q=cats
 ```
 
@@ -410,7 +412,7 @@ Examples:
 
 ### Filters
 
-```text
+```
 ?price=1000
 ```
 
@@ -418,7 +420,7 @@ Examples:
 
 ### Pagination
 
-```text
+```
 ?page=5
 ```
 
@@ -426,7 +428,7 @@ Examples:
 
 ### Language Selection
 
-```text
+```
 ?lang=en
 ```
 
@@ -442,7 +444,7 @@ However, parameters can also be used for tracking.
 
 Example from the lecture:
 
-```text
+```
 https://example.com/ad_engagement?
 clickID=9x82jsh272j
 &campaignID=23
@@ -450,19 +452,9 @@ clickID=9x82jsh272j
 
 Two parameters exist:
 
-### campaignID
-
-```text
-campaignID=23
-```
-
-This identifies the advertising campaign.
-
----
-
 ### clickID
 
-```text
+```
 clickID=9x82jsh272j
 ```
 
@@ -472,25 +464,37 @@ This is effectively acting as a tracking cookie.
 
 ---
 
+### campaignID
+
+```
+campaignID=23
+```
+
+This identifies the advertising campaign.
+
+---
+
+
+
 # 10. Why Tracking Parameters Are Dangerous
 
 Suppose:
 
 User A gets:
 
-```text
+```
 clickID=AAA111
 ```
 
 User B gets:
 
-```text
+```
 clickID=BBB222
 ```
 
 User C gets:
 
-```text
+```
 clickID=CCC333
 ```
 
@@ -506,11 +510,25 @@ Advertisers can track:
 
 # 11. Tracking Parameters vs Cookies
 
-Tracking cookies:
+**Tracking cookies**:
 
 Stored inside browser storage.
 
-Tracking parameters:
+Browser Storage
+│
+├── Cookies
+│
+├── Local Storage
+│
+├── Session Storage
+│
+├── Cache
+│
+├── Browsing History
+│
+└── Saved Passwords
+
+**Tracking parameters**:
 
 Visible directly inside URLs.
 
@@ -518,7 +536,7 @@ Example:
 
 Cookie:
 
-```text
+```
 ID=1234ABCD
 ```
 
@@ -526,7 +544,7 @@ may be hidden.
 
 Tracking parameter:
 
-```text
+```
 ?clickID=1234ABCD
 ```
 
@@ -548,12 +566,12 @@ A server log is a record of requests.
 
 Example:
 
-```text
+```
 09:00 User requested:
 page1
 ```
 
-```text
+```
 09:05 User requested:
 page2
 ```
@@ -571,23 +589,23 @@ The server remembers.
 
 Suppose every request contains:
 
-```text
+```
 clickID=1234ABCD
 ```
 
 The log becomes:
 
-```text
+```
 09:00 page1
 ID=1234ABCD
 ```
 
-```text
+```
 09:05 page2
 ID=1234ABCD
 ```
 
-```text
+```
 09:10 page3
 ID=1234ABCD
 ```
@@ -634,6 +652,30 @@ This information becomes commercially valuable.
 
 ---
 
+**Browser vs Server**
+
+The browser stores things like:
+
+Cookies
+Cache
+Local Storage
+
+The server stores things like:
+
+User accounts
+Website databases
+Server logs
+Analytics data
+
+**So when people say:**
+
+"Tracking parameters help websites know where visitors came from,"
+
+**they mean:**
+
+The browser sends the tracking parameters to the server, and the server records them in its logs or analytics systems.
+
+
 # 15. Browser Countermeasures
 
 Modern browsers increasingly fight back.
@@ -651,13 +693,75 @@ These browsers attempt to:
 * Block tracking cookies
 * Reduce cross-site tracking
 
+**Chrome Chriticism**
+* Chrome is developed by Google, whose revenue largely comes from advertising. Advertising often relies on understanding user behavior.
+* Google benefits from web analytics and advertising ecosystems.
+* Therefore, Chrome may not be as aggressive in blocking all forms of tracking as browsers whose primary selling point is privacy.
+
 ---
 
-# 16. Automatic URL Sanitization
+# 16. What Is a URL?
+Full Form
+
+URL = Uniform Resource Locator
+URL is a addresss used to loacte a resource on the internet.
+
+**URL Anatomy**
+(https://)(www.google.com)(/search)(?q=cats)
+│           │                 │       │
+│           │                 │       └── Query String
+│           │                 └────────── Path
+│           └────────────────────── Domain Name
+└───────────────────────────── Protocol
+
+**Component 1: Protocol**
+
+Example: https://
+
+Protocol tells the browser: "How should I communicate with this server?"
+
+Common protocols:
+
+Protocol	Full Form
+HTTP	        HyperText Transfer Protocol
+HTTPS	        HyperText Transfer Protocol Secure
+FTP	        File Transfer Protocol
+SSH	        Secure Shell
+
+**Component 2: Domain Name**
+
+Example:google.com
+
+Human-friendly name.
+
+Eventually converted into an IP address using DNS.
+
+**Component 3: Path**
+
+Example: /search
+
+Specifies which resource is requested.
+
+Think:
+
+Website = Building
+Path = Room Number
+
+**Component 4: Query String**
+
+Example: ?q=cats
+
+Contains additional information.
+
+This is where tracking usually occurs.
+
+
+
+# 16.1 Automatic URL(Uniform Resource Locator) Sanitization
 
 Modern browsers may detect:
 
-```text
+```
 clickID=
 ```
 
@@ -667,17 +771,17 @@ Before opening a link:
 
 The browser removes:
 
-```text
+```
 clickID=...
 ```
 
 This process is called:
 
-### URL Sanitization
+### URL(Uniform resource Locator) Sanitization
 
 or
 
-### URL Scrubbing
+### URL(Uniform Resource Loactor) Scrubbing
 
 ---
 
@@ -695,19 +799,19 @@ Example:
 
 Today:
 
-```text
+```
 clickID
 ```
 
 Tomorrow:
 
-```text
+```
 visitorToken
 ```
 
 Next week:
 
-```text
+```
 sessionMarker
 ```
 
@@ -729,29 +833,36 @@ This creates an ongoing arms race.
 
 ---
 
-## End of Version A – Part 1
 
-The remaining sections still include:
+                 YOU
+                  │
+                  │
+      ┌───────────┼───────────┐
+      │           │           │
+      ▼           ▼           ▼
 
-* First-party vs Third-party Cookies
-* Google Analytics
-* Harvard/Yale/Stanford example
-* Cross-site tracking
-* Incognito Mode
-* Supercookies
-* SMS insecurity
-* End-to-End Encryption
-* DNS
-* DNS Over HTTPS
-* DNS Over TLS
-* DNS Spoofing
-* VPNs
-* Tor (The Onion Router)
-* Layered Encryption
-* Permissions
-* Camera/Microphone access
-* GPS tracking
-* Final cybersecurity principles
+  Website      Browser      Device
+  Tracking   Fingerprint   Tracking
+
+      │           │           │
+      ▼           ▼           ▼
+
+    Cookies    Screen Size   GPS
+    Click IDs  Fonts         Sensors
+    URLs        Time Zone    Apps
+
+      │           │           │
+      └───────────┼───────────┘
+                  │
+                  ▼
+
+          User Profile
+
+                  │
+                  ▼
+
+          Targeted Ads
+          
 
 
 # Version A – Ultra-Detailed Notes (Part 2)
@@ -771,6 +882,20 @@ DNS is often called:
 > "The phone book of the Internet."
 
 ---
+**You
+ ↓
+Click URL
+ ↓
+Browser creates HTTP Request
+ ↓
+Request sent to Google
+ ↓
+Google receives request
+ ↓
+Google processes query
+ ↓
+Google returns search results**
+
 
 ## Why DNS Exists
 
@@ -780,25 +905,25 @@ Example:
 
 Instead of remembering:
 
-```text
+```
 142.250.183.78
 ```
 
 we remember:
 
-```text
+```
 google.com
 ```
 
 Instead of:
 
-```text
+```
 157.240.xxx.xxx
 ```
 
 we remember:
 
-```text
+```
 facebook.com
 ```
 
@@ -806,7 +931,7 @@ Humans are good at remembering names.
 
 Computers are good at remembering numbers.
 
-DNS bridges the gap.
+DNS bridges the gap---------This is called DNS Resolution.
 
 ---
 
@@ -814,7 +939,7 @@ DNS bridges the gap.
 
 DNS translates:
 
-```text
+```
 Domain Name
         ↓
 IP Address
@@ -822,7 +947,7 @@ IP Address
 
 Example:
 
-```text
+```
 google.com
       ↓
 142.250.183.78
@@ -838,19 +963,19 @@ This process is called:
 
 When you type:
 
-```text
+```
 https://www.google.com
 ```
 
 your computer first asks:
 
-```text
+```
 What is the IP address of google.com?
 ```
 
 DNS replies:
 
-```text
+```
 142.250.183.78
 ```
 
@@ -862,7 +987,7 @@ Only then can your browser contact Google.
 
 Before HTTPS can begin:
 
-```text
+```
 Browser
      ↓
 DNS Lookup
