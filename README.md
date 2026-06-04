@@ -163,14 +163,25 @@ A cookie is:
 
 A cookie usually contains:
 
-* Session identifiers
-* Tracking identifiers
-* Login information
-* User preferences
+* Session identifiers-------session identifier (Session ID) is a unique random value that **helps a website recognize your current session**.----session_id=8f3a91b7c2d4e5
+* Tracking identifiers--------------A tracking identifier is a unique ID used to **recognize the same browser** over time.----------visitor_id=ab12cd34ef56
+* Login information------C usually do not store your password directly.Instead **Cookies often store information proving you've already authenticated**.---auth_token=xyz123...
+* User preferences--------These cookies **remember settings you've chosen**.--------theme=dark-----language=en------font_size=large----------currency=INR
+
+**Session identifiers**: (Without session cookies, you'd have to log in again on every page.)
+**Tracking identifiers**: (Unlike a session ID, this may remain for months or years.)
+**Login information**: (Modern websites typically store secure tokens rather than usernames and passwords.)
+**User preferences**: (When you return, the website reads the cookie and restores your preferences.)
+
+| Cookie     | Purpose                                  |
+| ---------- | ---------------------------------------- |
+| session_id | Identifies your current browsing session |
+| visitor_id | Recognizes your browser over time        |
+| auth_token | Keeps you logged in                      |
+| theme      | Remembers dark mode preference           |
 
 
-
-A cookie is stored on your computer or phone.
+A cookie is stored on OUR computer or phone.
 
 ---
 
@@ -369,6 +380,25 @@ Meaning:
 Search for cats.
 
 ---
+**Visual Diagram**
+?q=cats
+ │   │
+ │   └──── Value
+ └────── Key
+ Search Query = cats
+
+**Without them**
+
+Google would not know what to search for.
+
+Example:
+?q=cats
+?q=dogs
+?q=cybersecurity
+
+Different input.
+Different results.
+
 
 # 1.7 Multiple Parameters
 
@@ -379,6 +409,7 @@ They are separated using:
 ```
 &
 ```
+**& (Ampersand) separates parameters.**
 
 Example:
 
@@ -393,8 +424,19 @@ a=1
 b=2
 c=3
 ```
-
+**Question Mark (?)
+          ↓
+ First Parameter
+          ↓
+ Ampersand (&)
+          ↓
+ Second Parameter
+          ↓
+ Ampersand (&)
+          ↓
+ Third Parameter**
 ---
+
 
 # 8. Legitimate Uses of Parameters
 
@@ -441,7 +483,7 @@ These are normal uses.
 # 9. Tracking Parameters
 
 However, parameters can also be used for tracking.
-
+**A tracking parameter is a URL(Uniform resource locator) parameter designed primarily to identify, monitor, or analyze user behavior across websites and advertising systems.**
 Example from the lecture:
 
 ```
@@ -462,6 +504,29 @@ This identifies the individual user.
 
 This is effectively acting as a tracking cookie.
 
+[Advertisement]
+ ↓
+[You Click]
+ ↓
+[Unique Number Assigned]
+ ↓
+[Activity Recorded]
+
+**Real-World Advertising Flow**
+
+Ad Displayed
+      ↓
+User Clicks
+      ↓
+Click ID Created
+      ↓
+User Visits Website
+      ↓
+Click ID Logged
+      ↓
+Profile Updated
+Future advertisements become more targeted.
+
 ---
 
 ### campaignID
@@ -474,9 +539,26 @@ This identifies the advertising campaign.
 
 ---
 
+**Campaign IDs identify:**
+
+Advertisement Group
+
+**NOT**
+
+Specific Person
+
+| Feature                | Click ID | Campaign ID |
+| ---------------------- | -------- | ----------- |
+| Tracks User?           | Yes      | No          |
+| Unique Per Person?     | Yes      | Usually     |
+| Used For Ads?          | Yes      | Yes         |
+| Privacy Concern?       | High     | Low         |
+| Identifies Individual? | Yes      | No          |
 
 
 # 10. Why Tracking Parameters Are Dangerous
+
+**Tracking parameters become useful because servers store them.**
 
 Suppose:
 
@@ -514,6 +596,14 @@ Advertisers can track:
 
 Stored inside browser storage.
 
+Cookie:
+
+```
+ID=1234ABCD
+```
+
+may be hidden.
+
 Browser Storage
 │
 ├── Cookies
@@ -532,16 +622,6 @@ Browser Storage
 
 Visible directly inside URLs.
 
-Example:
-
-Cookie:
-
-```
-ID=1234ABCD
-```
-
-may be hidden.
-
 Tracking parameter:
 
 ```
@@ -554,7 +634,7 @@ is visible in the URL.
 
 # 12. Server Logs
 
-Why do tracking parameters work?
+Why do **tracking parameters** work?
 
 Because servers keep logs.
 
@@ -576,18 +656,49 @@ page1
 page2
 ```
 
-```text
+```
 09:10 User requested:
 page3
 ```
-
 The server remembers.
+
+**It records information.**
+Timestamp 10:30:15
+IP Address: 103.45.67.89
+Requested URL (The entire address)---------------https://example.com/products/laptop?utm_source=facebook&id=123
+Requested Page (The path (resource) being requested)----------------------/products/laptop
+Query Parameters (The data after the ?)---------------------------utm_source=facebook&id=123
+Browser Information
+Status Code (The server's response to the browser.)
+Referrer (The page the user came from) --------**i visited**: https://facebook.com **then clicked**: https://example.com---------**Referrer**: https://facebook.com
+
+| Status Code | Meaning              |
+| ----------- | -------------------- |
+| 200         | Success (page found) |
+| 301         | Permanent redirect   |
+| 302         | Temporary redirect   |
+| 403         | Forbidden            |
+| 404         | Page not found       |
+| 500         | Server error         |
+
 
 ---
 
 # 13. Tracking Through Logs
 
-Suppose every request contains:
+**Why Are Logs Created?**
+
+**Legitimate reasons:**
+
+Troubleshooting
+Security
+Performance analysis
+
+**But logs can also become:**
+
+Tracking databases
+
+**Suppose every request contains:**
 
 ```
 clickID=1234ABCD
@@ -698,6 +809,22 @@ These browsers attempt to:
 * Google benefits from web analytics and advertising ecosystems.
 * Therefore, Chrome may not be as aggressive in blocking all forms of tracking as browsers whose primary selling point is privacy.
 
+**Attack Scenario: Complete Tracking Lifecycle**
+
+User Clicks Ad
+        ↓
+URL Contains Click ID
+        ↓
+Server Receives Request
+        ↓
+Server Creates Log
+        ↓
+Log Stored in Database
+        ↓
+User Profile Updated
+        ↓
+Targeted Ads Generated
+
 ---
 
 # 16. What Is a URL?
@@ -722,11 +849,11 @@ Protocol tells the browser: "How should I communicate with this server?"
 
 Common protocols:
 
-Protocol	Full Form
-HTTP	        HyperText Transfer Protocol
-HTTPS	        HyperText Transfer Protocol Secure
-FTP	        File Transfer Protocol
-SSH	        Secure Shell
+Protocol-----Full Form
+HTTP---------HyperText Transfer Protocol
+HTTPS--------HyperText Transfer Protocol Secure
+FTP----------File Transfer Protocol
+SSH----------Secure Shell
 
 **Component 2: Domain Name**
 
@@ -863,6 +990,41 @@ This creates an ongoing arms race.
 
           Targeted Ads
           
+
+# 19. Databases and User Profiles
+  --------------------------------Logs often move into databases.
+
+**A database is an organized collection of data.**
+
+Tracking Database Example
+| Click ID | Interest    |
+| -------- | ----------- |
+| ABC123   | Cats        |
+| ABC123   | Farming     |
+| ABC123   | Gardening   |
+| ABC123   | Agriculture |
+
+# User Profiling
+
+Definition:
+
+User profiling is the process of building a detailed model of a person's behavior, interests, and preferences using collected data.
+
+**Profiling Flowchart**
+
+Click Ad
+   ↓
+Tracking Parameter
+   ↓
+Server Log
+   ↓
+Database
+   ↓
+Profile Creation
+   ↓
+Targeted Advertising
+
+
 
 
 # Version A – Ultra-Detailed Notes (Part 2)
