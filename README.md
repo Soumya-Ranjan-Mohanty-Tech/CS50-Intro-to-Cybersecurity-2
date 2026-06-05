@@ -187,7 +187,51 @@ A cookie is stored on OUR computer or phone.
 
 ## Why Were Cookies Created?
 
-Cookies were originally created because HTTP is stateless.
+Cookies were originally created because HTTP is stateless(**Stateless- A protocol property where each request is independent and no memory is retained automatically.**).
+
+**How Cookies Work Technically**
+
+Suppose you visit:example.com
+
+Server responds:
+</> http
+Set-Cookie: ID=1234ABCD
+
+**What Is Set-Cookie?**
+
+Set-Cookie is an HTTP response header.
+
+Purpose: Tell browser to store a cookie.
+
+Browser stores: ID=1234ABCD
+
+Next request:Browser automatically sends: Cookie: ID=1234ABCD
+
+Server sees: ID=1234ABCD
+
+and says: I know this user.
+
+**Complete Flowchart**
+
+Visit Website
+       ↓
+Server Sends Set-Cookie
+       ↓
+Browser Stores Cookie
+       ↓
+Future Request
+       ↓
+Browser Sends Cookie
+       ↓
+Server Recognizes User
+
+**Set-Cookie**
+
+HTTP response header used to create cookies.
+
+**Cookie Header**
+
+HTTP request header used to send cookies back.
 
 ### HTTP
 
@@ -256,7 +300,14 @@ Cookies are merely a technology.
 
 They are useful for:
 
+
+ 
+
 ### Login Sessions
+ 
+**Session Cookies** A Session Cookie remembers information during a browsing session.
+ 
+**Purpose**:Maintain state.
 
 Example:
 
@@ -344,6 +395,16 @@ Everything after:
 ```
 
 is a parameter.
+
+| Feature             | Session Cookie | Tracking Cookie |
+| ------------------- | -------------- | --------------- |
+| Purpose             | Functionality  | Tracking        |
+| Login Support       | Yes            | No              |
+| Shopping Cart       | Yes            | No              |
+| Privacy Risk        | Low            | High            |
+| User Identification | Temporary      | Long-Term       |
+| Advertising Use     | No             | Yes             |
+
 
 ---
 
@@ -525,6 +586,7 @@ User Visits Website
 Click ID Logged
       ↓
 Profile Updated
+
 Future advertisements become more targeted.
 
 ---
@@ -637,6 +699,26 @@ is visible in the URL.
 Why do **tracking parameters** work?
 
 Because servers keep logs.
+
+Server
+   ↓
+Creates Cookie
+   ↓
+Browser Stores Cookie
+   ↓
+Browser Sends Cookie Back Later
+
+**Visit Website
+        ↓
+Website Creates Cookie
+        ↓
+Browser Stores Cookie
+        ↓
+Future Requests
+        ↓
+Cookie Sent Back
+        ↓
+Website Recognizes User**
 
 ---
 
@@ -813,7 +895,7 @@ These browsers attempt to:
 
 User Clicks Ad
         ↓
-URL Contains Click ID
+URL Contains Click ID (Tracking Parameters)
         ↓
 Server Receives Request
         ↓
@@ -826,6 +908,7 @@ User Profile Updated
 Targeted Ads Generated
 
 ---
+
 
 # 16. What Is a URL?
 Full Form
@@ -1024,6 +1107,33 @@ Profile Creation
    ↓
 Targeted Advertising
 
+### MASTER MEMORY DIAGRAM
+
+**HTTP
+(Stateless)
+       ↓
+Need Memory
+       ↓
+Cookies
+       ↓
+Session Cookies
+       ↓
+Login & Cart Support**
+
+AND
+
+**Cookies
+       ↓
+Tracking Cookies
+       ↓
+User Tracking
+       ↓
+Profiles
+       ↓
+Targeted Advertising**
+
+
+
 
 
 
@@ -1039,7 +1149,7 @@ Targeted Advertising
 
 **DNS = Domain Name System**
 
-DNS is often called:
+DNS(Domain Name System) is often called:
 
 > "The phone book of the Internet."
 
@@ -1188,7 +1298,7 @@ Your browser may already remember.
 
 Example:
 
-```text
+```
 google.com
 ↓
 cached
