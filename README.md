@@ -199,7 +199,7 @@ Set-Cookie: ID=1234ABCD
 
 **What Is Set-Cookie?**
 
-Set-Cookie is an HTTP response header.
+Set-Cookie/Cookie Header is an **HTTP response header**.
 
 Purpose: Tell browser to store a cookie.
 
@@ -300,9 +300,6 @@ Cookies are merely a technology.
 
 They are useful for:
 
-
- 
-
 ### Login Sessions
  
 **Session Cookies** A Session Cookie remembers information during a browsing session.
@@ -313,7 +310,7 @@ Example:
 
 You log into Gmail.
 
-Google stores a session cookie.----------Google creates (sets) the cookie, but your browser stores it.
+**Google stores a session cookie.----------Google creates (sets) the session identifier/authentication token and the cookie in Set-Cookie HTTP response header to browser, but the browser stores it. -----------------------In future requests to Google, your browser automatically sends the cookie back in a Cookie HTTP request header.**
 
 Now Google remembers:
 
@@ -372,6 +369,16 @@ This allows organizations to build a profile of:
 * Interests
 * Habits
 
+| Feature             | Session Cookie | Tracking Cookie |
+| ------------------- | -------------- | --------------- |
+| Purpose             | Functionality  | Tracking        |
+| Login Support       | Yes            | No              |
+| Shopping Cart       | Yes            | No              |
+| Privacy Risk        | Low            | High            |
+| User Identification | Temporary      | Long-Term       |
+| Advertising Use     | No             | Yes             |
+
+
 ---
 
 # 1.6 Tracking Parameters
@@ -395,15 +402,6 @@ Everything after:
 ```
 
 is a parameter.
-
-| Feature             | Session Cookie | Tracking Cookie |
-| ------------------- | -------------- | --------------- |
-| Purpose             | Functionality  | Tracking        |
-| Login Support       | Yes            | No              |
-| Shopping Cart       | Yes            | No              |
-| Privacy Risk        | Low            | High            |
-| User Identification | Temporary      | Long-Term       |
-| Advertising Use     | No             | Yes             |
 
 
 ---
