@@ -165,7 +165,7 @@ A cookie usually contains:
 
 * Session identifiers-------session identifier (Session ID) is a unique random value that **helps a website recognize your current session**.----session_id=8f3a91b7c2d4e5
 * Tracking identifiers--------------A tracking identifier is a unique ID used to **recognize the same browser** over time.----------visitor_id=ab12cd34ef56
-* Login information------C usually do not store your password directly.Instead **Cookies often store information proving you've already authenticated**.---auth_token=xyz123...
+* Login information------Cookies usually do not store your password directly.Instead **Cookies often store information proving you've already authenticated**.---auth_token=xyz123...
 * User preferences--------These cookies **remember settings you've chosen**.--------theme=dark-----language=en------font_size=large----------currency=INR
 
 **Session identifiers**: (Without session cookies, you'd have to log in again on every page.)
