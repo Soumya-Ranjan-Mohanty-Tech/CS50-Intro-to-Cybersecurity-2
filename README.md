@@ -116,6 +116,161 @@ Final Lecture Summary
 
 This section of the CS50 Cybersecurity lecture focuses on one of the most important topics in modern computing:
 
+# 1. What Is Privacy?
+
+Privacy means:
+
+Having control over who can collect, store, analyze, share, and profit from information about you.
+
+On the internet, privacy is about controlling information such as:
+
+Websites visited
+Search history
+Location
+Device information
+Browser information
+Messages
+Shopping habits
+Personal interests
+
+# 2. Why Privacy Is Difficult on the Internet
+
+The internet was originally designed for:
+
+Communication
+Information sharing
+
+It was NOT originally designed for:
+
+Privacy
+Anonymity
+Tracking prevention
+
+As a result:
+
+Every action leaves traces.
+
+# 3. Digital Footprints
+
+Whenever you:
+
+Visit a website
+Search Google
+Watch YouTube
+Click an advertisement
+Open an application
+
+You leave a:
+
+Digital Footprint
+
+A digital footprint is a record of your activity.
+
+Flowchart: Digital Footprint Creation
+You
+ ↓
+Open Browser
+ ↓
+Visit Website
+ ↓
+Request Sent
+ ↓
+Server Receives Request
+ ↓
+Server Creates Logs
+ ↓
+Digital Footprint Exists
+
+# 4. Main Entities Watching Internet Activity
+
+The lecture discussed many parties.
+
+Let's rank them.
+
+1. **Websites**
+
+Example:
+
+Amazon
+Facebook
+Google
+
+Can see:
+
+Pages visited
+Time spent
+Buttons clicked
+
+Cannot directly see:
+
+Other websites visited
+
+(Unless tracking systems are used.)
+
+2. **Third-Party Trackers**
+
+Examples:
+
+Google Analytics
+Facebook Pixel
+Ad Networks
+
+Can see:
+
+Activity across many websites
+
+This is much more powerful.
+
+3. Internet Service Provider (ISP)
+
+Examples:
+
+In India:
+
+Jio
+Airtel
+BSNL
+ACT
+
+Can see:
+
+DNS requests
+Traffic patterns
+IP connections
+
+May not see encrypted content.
+
+4. Operating System Vendors
+
+Examples:
+
+Microsoft
+Apple
+Google
+
+Can potentially collect:
+
+Device **telemetry**
+Usage statistics
+Location information
+
+Depending on settings.
+
+5. Application Developers
+
+Examples:
+
+WhatsApp
+Instagram
+TikTok
+
+May collect:
+
+Contacts
+Camera access
+Location
+Usage statistics
+
 **Privacy.**
 
 Earlier sections of cybersecurity focus on:
@@ -304,7 +459,7 @@ They are useful for:
  
 **Session Cookies** A Session Cookie remembers information during a browsing session.
  
-**Purpose**:Maintain state.
+**Purpose**: Maintain state.
 
 Example:
 
@@ -542,7 +697,7 @@ These are normal uses.
 # 9. Tracking Parameters
 
 However, parameters can also be used for tracking.
-**A tracking parameter is a URL(Uniform resource locator) parameter designed primarily to identify, monitor, or analyze user behavior across websites and advertising systems.**
+**A tracking parameter is a URL(Uniform resource locator) parameter designed primarily to [identify, monitor, or analyze] user behavior across websites and advertising systems.**
 Example from the lecture:
 
 ```
@@ -652,7 +807,7 @@ Advertisers can track:
 
 # 11. Tracking Parameters vs Cookies
 
-**Tracking cookies**:
+## **Tracking cookies**:
 
 Stored inside browser storage.
 
@@ -668,17 +823,17 @@ Browser Storage
 │
 ├── Cookies
 │
-├── Local Storage
+├── **Local Storage
 │
 ├── Session Storage
 │
 ├── Cache
 │
-├── Browsing History
+├── Browsing History**
 │
 └── Saved Passwords
 
-**Tracking parameters**:
+## **Tracking parameters**:
 
 Visible directly inside URLs.
 
