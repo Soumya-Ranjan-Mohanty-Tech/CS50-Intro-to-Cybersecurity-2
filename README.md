@@ -1008,10 +1008,27 @@ Local Storage
 
 The server stores things like:
 
+
+
+
+
+
+
+
+Server logs
 User accounts
 Website databases
-Server logs
 Analytics data
+
+
+
+
+
+
+
+
+
+
 
 **So when people say:**
 
@@ -1067,12 +1084,12 @@ Targeted Ads Generated
 Full Form
 
 URL = Uniform Resource Locator
-URL is a addresss used to loacte a resource on the internet.
+**URL is a addresss used to loacte a resource on the internet.**
 
 **URL Anatomy**
 (https://)(www.google.com)(/search)(?q=cats)
 │           │                 │       │
-│           │                 │       └── Query String
+│           │                 │       └── Query String/ Query Parameter
 │           │                 └────────── Path
 │           └────────────────────── Domain Name
 └───────────────────────────── Protocol
@@ -1290,6 +1307,169 @@ Targeted Advertising**
 
 
 
+### The Privacy Threat Landscape
+
+The lecture discussed multiple tracking mechanisms.
+
+# Threat #1
+
+Tracking Parameters
+
+Example:
+
+https://example.com?
+clickid=123456789
+
+Purpose:
+
+Track your clicks.
+
+# Threat #2
+
+Cookies
+
+Purpose:
+
+Remember you.
+
+Can become:
+
+Tracking mechanisms.
+
+# Threat #3
+
+Third-Party Cookies
+
+Purpose:
+
+Track you across websites.
+
+# Threat #4
+
+Browser Fingerprinting
+
+Purpose:
+
+Identify your browser without cookies.
+
+# Threat #5
+
+DNS Monitoring
+
+Purpose:
+
+See which websites you visit.
+
+# Threat #6
+
+Location Tracking
+
+Purpose:
+
+Know where you physically go.
+
+# Threat #7
+
+Application Permissions
+
+Purpose:
+
+Access:
+
+Camera
+Microphone
+Contacts
+Location
+
+
+
+
+### Core Privacy Principle
+
+The entire lecture revolves around one principle:
+
+Every piece of information revealed about you can potentially be used to identify, track, profile, or influence you.
+
+
+| Information       | Seems Harmless? | Can Be Used For     |
+| ----------------- | --------------- | ------------------- |
+| Browser Version   | Yes             | Fingerprinting      |
+| Screen Resolution | Yes             | Fingerprinting      |
+| Location          | Yes             | Tracking Movements  |
+| Cookies           | Yes             | User Identification |
+| DNS Requests      | Yes             | Browsing History    |
+| Click IDs         | Yes             | Ad Tracking         |
+
+
+
+# Define Privacy
+
+Privacy is the ability to control how personal information is collected, used, stored, and shared.
+
+# Define Digital Footprint
+
+A digital footprint is the record of activities a user leaves behind while using digital services.
+
+# Major Privacy Threats
+Tracking Parameters
+Cookies
+Third-Party Cookies
+Browser Fingerprinting
+DNS Monitoring
+ISP Tracking
+App Permissions
+Location Tracking
+
+### URL
+
+Uniform Resource Locator
+
+Internet resource address.
+
+# Query String
+
+The portion of a URL following a question mark that contains parameters.
+
+# Parameter
+
+Key-value pair used to transmit information.
+
+# Tracking Parameter
+
+Parameter used to monitor user activity.
+
+# C lick ID
+
+Unique identifier assigned to a user's ad click.
+
+# Campaign ID
+
+Identifier for an advertising campaign.
+
+# Server Log
+
+Record of requests received by a server.
+
+# User Profiling
+
+Creating behavioral models from collected user data.
+
+
+
+
+**Tracking Parameter
+          ↓
+Server Log
+          ↓
+Database
+          ↓
+Profile
+          ↓
+Targeted Ads**
+
+
+
+
 # Version A – Ultra-Detailed Notes (Part 2)
 
 ## Privacy, DNS, DNS over HTTPS (DoH), DNS over TLS (DoT), VPNs, Tor, Permissions, and Location Tracking
@@ -1451,11 +1631,11 @@ Your browser may already remember.
 
 Example:
 
-```
+[```]
 google.com
 ↓
 cached
-```
+[```]
 
 No DNS request needed.
 
@@ -1494,7 +1674,7 @@ Examples of ISPs:
 
 The ISP may already know:
 
-```text
+```
 google.com
 ↓
 142.250.xxx.xxx
@@ -1512,9 +1692,7 @@ The request continues up the hierarchy until an authoritative server provides th
 
 # DNS Uses Port 53
 
-Recall:
-
-A port identifies a service.
+Recall: A port identifies a service.
 
 Examples:
 
@@ -1527,8 +1705,8 @@ Examples:
 
 Traditionally DNS uses:
 
-```text
-Port 53
+```
+[Port 53]
 ```
 
 ---
@@ -1537,7 +1715,7 @@ Port 53
 
 Traditional DNS is usually:
 
-```text
+```
 Unencrypted
 ```
 
@@ -1545,7 +1723,7 @@ Meaning:
 
 When your device asks:
 
-```text
+```
 What is the IP address of amazon.com?
 ```
 
@@ -1569,7 +1747,7 @@ Potentially:
 
 They learn:
 
-```text
+```
 User looked up:
 google.com
 
@@ -1588,13 +1766,13 @@ Even if website traffic later uses HTTPS.
 
 Traditional DNS reveals:
 
-```text
+```
 Which website?
 ```
 
 but not:
 
-```text
+```
 Which page?
 ```
 
@@ -1602,13 +1780,13 @@ Example:
 
 ISP may know:
 
-```text
+```
 harvard.edu
 ```
 
 but not:
 
-```text
+```
 harvard.edu/cs50/cybersecurity/week7
 ```
 
@@ -1622,21 +1800,20 @@ Many DNS servers keep logs.
 
 Logs may contain:
 
-* Time
+* Timestamp
 * IP address
 * Requested domain
 * Device information
 
 Example:
 
-```text
+```
 7:00 PM
 User: 49.xxx.xxx.xxx
-Requested:
-google.com
+Requested:google.com
 ```
 
-Over time this creates a browsing profile.
+Over time this creates a **browsing profile**.
 
 ---
 
@@ -1652,13 +1829,13 @@ Over time this creates a browsing profile.
 
 Traditional DNS:
 
-```text
+```
 Unencrypted
 ```
 
 DoH:
 
-```text
+```
 Encrypted
 ```
 
@@ -1668,7 +1845,7 @@ Encrypted
 
 Instead of:
 
-```text
+```
 Browser
      ↓
 DNS Port 53
@@ -1678,7 +1855,7 @@ DNS Server
 
 DoH uses:
 
-```text
+```
 Browser
      ↓
 HTTPS
@@ -1692,7 +1869,7 @@ DNS Server
 
 Normal DNS query:
 
-```text
+```
 What is google.com's IP?
 ```
 
@@ -1700,7 +1877,7 @@ can be read by the ISP.
 
 DoH encrypts:
 
-```text
+```
 What is google.com's IP?
 ```
 
@@ -1743,7 +1920,7 @@ Encrypt DNS.
 
 DoH:
 
-```text
+```
 DNS
 inside
 HTTPS
@@ -1751,7 +1928,7 @@ HTTPS
 
 DoT:
 
-```text
+```
 DNS
 inside
 TLS
@@ -1772,6 +1949,64 @@ No HTTP involved.
 
 ---
 
+
+
+
+# Cookie
+
+Small piece of data stored by a browser for a website.
+
+# Session Cookie
+
+Cookie used to maintain state and user sessions.
+
+# Tracking Cookie
+
+Cookie used to monitor user behavior.
+
+# Set-Cookie
+
+HTTP response header used to create cookies.
+
+# Cookie Header
+
+HTTP request header used to send cookies back.
+
+# Virtual Handstamp
+
+Analogy describing how cookies identify returning users.
+
+# Stateless
+
+A protocol property where each request is independent and no memory is retained automatically.
+
+
+**HTTP
+(Stateless)
+       ↓
+Need Memory
+       ↓
+Cookies
+       ↓
+Session Cookies
+       ↓
+Login & Cart Support**
+
+[AND]
+
+**Cookies
+       ↓
+Tracking Cookies
+       ↓
+User Tracking
+       ↓
+Profiles
+       ↓
+Targeted Advertising**
+
+
+
+
 # DNS Spoofing
 
 ## What Is It?
@@ -1784,13 +2019,13 @@ Example
 
 You ask:
 
-```text
+```
 What is the IP of google.com?
 ```
 
 Malicious server responds:
 
-```text
+```
 203.xxx.xxx.xxx
 ```
 
@@ -1802,13 +2037,13 @@ which belongs to an attacker.
 
 Victim thinks:
 
-```text
+```
 I am visiting Google.
 ```
 
 Actually visits:
 
-```text
+```
 Attacker's Website
 ```
 
@@ -1822,13 +2057,13 @@ The attacker usually cannot provide Google's valid TLS certificate.
 
 Browser shows warning:
 
-```text
+```
 Connection is not private
 ```
 
 or
 
-```text
+```
 Certificate invalid
 ```
 
@@ -1850,13 +2085,13 @@ DNS spoofing becomes much harder.
 
 VPN creates:
 
-```text
+```
 Encrypted Tunnel
 ```
 
 between:
 
-```text
+```
 Your Device
        ↓
 VPN Server
@@ -1866,7 +2101,7 @@ VPN Server
 
 # Without VPN
 
-```text
+```
 Device
    ↓
 ISP
