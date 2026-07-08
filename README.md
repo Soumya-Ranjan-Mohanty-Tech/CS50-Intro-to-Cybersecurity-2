@@ -195,7 +195,7 @@ Amazon
 Facebook
 Google
 
-Can see:
+**Can see**:
 
 Pages visited
 Time spent
@@ -221,8 +221,8 @@ Activity across many websites
 
 This is much more powerful.
 
-3. Internet Service Provider (ISP)
-
+3. **Internet Service Provider (ISP)**
+   
 Examples:
 
 In India:
@@ -240,8 +240,8 @@ IP connections
 
 May not see encrypted content.
 
-4. Operating System Vendors
-
+4. **Operating System Vendors**
+    
 Examples:
 
 Microsoft
@@ -328,12 +328,12 @@ A cookie usually contains:
 **Login information**: (Modern websites typically store secure tokens rather than usernames and passwords.)
 **User preferences**: (When you return, the website reads the cookie and restores your preferences.)
 
-| Cookie     | Purpose                                  |
-| ---------- | ---------------------------------------- |
-| session_id | Identifies your current browsing session |
-| visitor_id | Recognizes your browser over time        |
-| auth_token | Keeps you logged in                      |
-| theme      | Remembers dark mode preference           |
+| Cookie         | Purpose                                  |
+| -------------- | ---------------------------------------- |
+| **session_id** | Identifies your current browsing session |
+| **visitor_id** | Recognizes your browser over time        |
+| **auth_token** | Keeps you logged in                      |
+| **theme**      | Remembers dark mode preference           |
 
 
 A cookie is stored on OUR computer or phone.
@@ -616,7 +616,7 @@ Different results.
 
 # 1.7 Multiple Parameters
 
-URLs can contain multiple parameters.
+URLs(UNIFORM RESOURCE lOACATOR) can contain multiple parameters.
 
 They are separated using:
 
@@ -849,7 +849,7 @@ is visible in the URL.
 
 # 12. Server Logs
 
-Why do **tracking parameters** work?
+**[      Why do tracking parameters work?            ]**
 
 Because servers keep logs.
 
