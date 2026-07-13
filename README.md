@@ -1630,29 +1630,22 @@ So DNS is hierarchical.
 Your browser may already remember.
 
 Example:
-
 [```]
 google.com
 ↓
 cached
 [```]
-
 No DNS request needed.
-
 ---
 
 ## Level 2: Operating System Cache
-
 The operating system may remember.
-
 Examples:
-
 * Windows
 * macOS
 * Linux
 * Android
 * iOS
-
 ---
 
 ## Level 3: Router Cache
@@ -1686,7 +1679,7 @@ google.com
 
 If nobody knows:
 
-The request continues up the hierarchy until an authoritative server provides the answer.
+The request continues up the hierarchy until an authoritative DNS server provides the answer.
 
 ---
 
