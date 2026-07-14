@@ -849,7 +849,7 @@ is visible in the URL.
 
 # 12. Server Logs
 
-**[      Why do tracking parameters work?            ]**
+**[         Why do tracking parameters work?            ]**
 
 Because servers keep logs.
 
