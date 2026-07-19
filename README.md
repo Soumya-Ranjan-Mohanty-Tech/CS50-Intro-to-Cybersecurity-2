@@ -250,7 +250,7 @@ Google
 
 Can potentially collect:
 
-Device **telemetry**
+Device **telemetry**: continuous, automated collection of raw data- such as process executions, authenticatio events, network connections from devices to a centralised platform.
 Usage statistics
 Location information
 
@@ -1015,10 +1015,13 @@ The server stores things like:
 
 
 
+
 Server logs
 User accounts
 Website databases
 Analytics data
+
+
 
 
 
